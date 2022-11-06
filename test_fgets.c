@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <regex.h>
 
 #define MAX_LEN 100
 
-int main(void)
+int main()
 {
     FILE *stream;
-    char line[MAX_LEN], *result;
+    char line[MAX_LEN];
     stream = fopen("words.txt", "r");
+
     if (!stream)
     {
         perror("Failed to open file.");
@@ -16,11 +18,12 @@ int main(void)
     {
         printf("Opened words.txt...\n");
 
-        if ((result = fgets(line, MAX_LEN, stream)) != NULL)
+        while (fgets(line, MAX_LEN, stream))
         {
-            printf("The string is %s\n", result);
+            printf("%s", line);
         }
-        if (fclose(stream))
+
+        if (fclose(stream) == EOF)
         {
             perror("fclose error");
         }

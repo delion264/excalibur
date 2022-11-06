@@ -8,18 +8,6 @@
 #define MAX_LEN 100   /* maximum word length */
 #define WORD_LIST "words.txt"
 
-/* Truncates a given wordlist, excluding entries that are longer than a given wordlength.
-   Returns a new file containing the truncated wordlist. */
-FILE *trunc_wdlist(FILE *wordlist, int wordlength)
-{
-    regex_t pattern;
-    int regex_val = 0;
-    char *pattern_str = snprintf("^([a-zA-Z]){%d}(?![a-zA-Z])", wordlength);
-    regex_val = regcomp(&pattern, pattern_str, 0);
-    /* regexec through whole wordlist and save to trunc_wdlist.txt */
-    // regexec(&pattern, )
-}
-
 /* Iterates through a wordlist and checks if a string is a (prefixing) substring of a wordlist entry */
 bool isSubstring(FILE *wordlist, char *str)
 {
